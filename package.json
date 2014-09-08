@@ -1,0 +1,29 @@
+{
+  "name": "hexe",
+  "version": "0.0.0",
+  "description": "a hexagonal structure",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/walpurgisnacht/hexe.git"
+  },
+  "keywords": [
+    "hexagonal",
+    "framework",
+    "soa"
+  ],
+  "author": "frederik dudzik",
+  "license": "mit",
+  "bugs": {
+    "url": "https://github.com/walpurgisnacht/hexe/issues"
+  },
+  "homepage": "https://github.com/walpurgisnacht/hexe",
+  "dependencies": {
+    "sinon": "^1.10.3",
+    "expect.js": "^0.3.1",
+    "lodash": "^2.4.1"
+  }
+}
