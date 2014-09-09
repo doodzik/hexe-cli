@@ -28,6 +28,8 @@ $ hexe d/delete contract_name
 $ hexe a/add contract_name [adapter_name(default: service_name)]
 ```
 
+###general options
+* ```--trace```: provide full stack trace
 
 ***
 
