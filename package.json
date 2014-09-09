@@ -1,14 +1,17 @@
 {
-  "name": "hexe",
+  "name": "hexe-cli",
   "version": "0.0.0",
   "description": "a hexagonal structure",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
+  "bin" : { 
+    "hexe" : "./bin/hexe" 
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/walpurgisnacht/hexe.git"
+    "url": "https://github.com/walpurgisnacht/hexe-cli.git"
   },
   "keywords": [
     "hexagonal",
@@ -18,9 +21,9 @@
   "author": "frederik dudzik",
   "license": "mit",
   "bugs": {
-    "url": "https://github.com/walpurgisnacht/hexe/issues"
+    "url": "https://github.com/walpurgisnacht/hexe-cli/issues"
   },
-  "homepage": "https://github.com/walpurgisnacht/hexe",
+  "homepage": "https://github.com/walpurgisnacht/hexe-cli",
   "dependencies": {
     "sinon": "^1.10.3",
     "expect.js": "^0.3.1",

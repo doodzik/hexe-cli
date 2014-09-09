@@ -1,12 +1,31 @@
-# ABOUT
+### a cli-programm made to make the interaction with hexe generators easier
 
 ***
 
-## INSTALATION
+# WHO THE FUCK IS HEXE
+
+###### Her Wiccan Rede was [Hexagonal architecture](http://alistair.cockburn.us/Hexagonal+architecture)
+###### She conjures hexagonal.
+###### She learns new spells fast,
+###### And new tongues even faster.
+###### Her spells interact nicely with each other,
+###### And she can modify them after she invoke them 
 
 ***
 
-## USAGE
+# INSTALATION
+
+```bash
+$ npm install -g git+https://git@github.com/walpurgisnacht/hexe-cli.git
+$ cd hexe
+$ npm link
+```
+
+if you need to install some additional generators the programm will notify you
+
+***
+
+# USAGE
 
 ###init new service
 ```bash
@@ -58,11 +77,13 @@ $ hexe g/generate language
 $ hexe g/generate language contact_name
 ```
 
+***
 
-#### implement
+#### TODO implement
 * typescript
 * -as/-v options
 * delete contract
+* 100% test coverage
 
 ***
 
