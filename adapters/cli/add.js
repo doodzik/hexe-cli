@@ -1,34 +1,35 @@
+var when = require('when');
+var generator = require('../../lib/generator');
 var fs = require('fs');
-var sys = require('sys')
 
-var exec = require('child_process').exec;
-function puts(error, stdout, stderr) { sys.puts(stdout) }
-
-module.exports = function addCmd(argv, hexeObj, cb){
+module.exports = function addCmd(argv, hexeObj){
 //TODO [-as new_contract_name] [-v/--version 0.0.0 ]
-var contract = argv._[0];
-var adapter = argv._[1] || hexeObj.service;
-var lang = hexeObj.lang;
-var generator = 'hexe_'+lang+'_'+contract;
-var generatorName = 'generator_'+ generator;
+  return when([
+    argv._[0],
+    (argv._[1] || hexeObj.service)
+  ])
+  .then(function(contract, adapter){
+    var gSet = generator.set(lang+'_'+contract);
 
-try {
-  console.log(require.resolve(generatorName));
-} catch(e) {
-  console.error('npm install -g '+ generatorName);
-  process.exit(e.code);
-}
-
-if(!(contract in hexeObj.contracts)){
-  exec('yo '+generator+':contract', puts);
-  hexeObj.contracts[contract] = {};
-}
-
-if(!fs.existsSync(process.cwd()+'/adapters/'+contract+'/'+adapter)){
-  exec('yo '+generator+':adapter '+adapter, puts)
-}else{
-  throw new Error('adapter already defiend')
-}
-
-return hexeObj;
+    if(!(contract in hexeObj.contracts)){
+      hexeObj.contracts[contract] = {};
+      return gSet('contract')
+    }else{
+      var file = process.cwd()+'/adapters/'+contract+'/'+adapter
+      fs.exists(file, function(exists) {
+        if (exists) {
+          throw new Error('adapter already defiend')
+        }else{
+          return gSet('adapter')
+        }
+      })
+    }
+  })
+  .then(function(_generator){
+    generator.exists(_generator)
+    generator.run(_generator);
+  })
+  .then(function(){
+    return hexeObj;
+  })
 }

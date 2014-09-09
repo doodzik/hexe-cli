@@ -10,12 +10,17 @@
 
 ###init new service
 ```bash
-$ hexe n/new language service_name 
+$ hexe n/new language service_name
 ```
 
 ###add contract to Service
 ```bash
 $ hexe a/add contract_name [-as new_contract_name] [-v/--version 0.0.0 ]
+```
+
+###remove contract from Service
+```bash
+$ hexe d/delete contract_name
 ```
 
 ###add adapter to Service
@@ -30,14 +35,14 @@ $ hexe a/add contract_name [adapter_name(default: service_name)]
 
 ### .hexe file:
 ```javascript
-  {'service': 'name',
-  'lang': 'language',
+  {'service': name,
+  'lang': language,
   'contracts': {
      contract_name: {
  	  'version': '0.0.0',
  	  'as': contract_name
  	 }
-    } 
+    }
    }
 ```
 
@@ -54,8 +59,8 @@ $ hexe g/generate language contact_name
 
 #### implement
 * typescript
-* hexe structure
-* use promises
+* -as/-v options
+* delete contract
 
 ***
 

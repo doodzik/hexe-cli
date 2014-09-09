@@ -24,6 +24,9 @@
   "dependencies": {
     "sinon": "^1.10.3",
     "expect.js": "^0.3.1",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "when": "^3.4.5",
+    "ramda": "^0.4.3",
+    "optimist": "^0.6.1"
   }
 }
