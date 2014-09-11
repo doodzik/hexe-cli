@@ -7,12 +7,14 @@ var fs = require('fs');
 var when = require('when');
 var nodefn = require('when/node');
 var hexeObjPath = process.cwd()+'/.hexe'
+var isNew = true
 
 when().then(function(){
   return nodefn.call(fs.readFile, hexeObjPath).then(function(data){
-    return JSON.parse(data);
+    return JSON.parse(data)
   }, function(){
-    return {};
+    isNew = true
+    return {}
   })
 })
 .then(function(hexeObj){
@@ -25,10 +27,12 @@ when().then(function(){
 })
 .spread(function(hexeObj, newHexeObj){
   if(hexeObj !== newHexeObj){
+    if(isNew){
+      hexeObjPath = process.cwd()+'/'+ newHexeObj.Service +'/.hexe'
+    }
     var newHexObj = JSON.stringify(newHexeObj);
     nodefn.call(fs.writeFile, hexeObjPath, newHexObj).done()
   }
-  console.log('HEX!HEX!');
 })
 .catch(function(err){
   if(argv.trace){throw err}

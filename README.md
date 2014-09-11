@@ -9,7 +9,7 @@
 ###### She learns new spells fast,
 ###### And new tongues even faster.
 ###### Her spells interact nicely with each other,
-###### And she can modify them after she invoke them 
+###### And she can modify them after she invoke them
 
 ***
 
@@ -84,6 +84,7 @@ $ hexe g/generate language contact_name
 * -as/-v options
 * delete contract
 * 100% test coverage
+* dont be dependent on manually adding external dependencies when calling add
 
 ***
 

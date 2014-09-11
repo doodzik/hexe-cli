@@ -10,13 +10,21 @@ module.exports = function newCmd (argv, hexeObj){
     obj.generator = generator.set(obj.lang);
     return obj;
   }).then(function(obj){
-    generator.exists(obj.generator(''))
-    generator.run(obj.generator('')+' '+obj.service);
-    return obj;
+    return when()
+           .then(function(){
+             generator.exists(obj.generator(''))
+           })
+           .then(function(){
+             generator.run(obj.generator('')+' '+obj.service);
+           })
+           .then(function(){
+             return obj;
+           })
   })
   .then(function(obj){
     hexeObj.lang = obj.lang
     hexeObj.service = obj.service
+    hexeObj.Service = newHexeObj.service.charAt(0).toUpperCase() + newHexeObj.service.slice(1).toLowerCase()
     return hexeObj;
   })
 }
