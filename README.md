@@ -2,7 +2,7 @@
 
 ***
 
-# WHO THE FUCK IS HEXE
+# WHO IS HEXE
 
 ###### Her Wiccan Rede was [Hexagonal architecture](http://alistair.cockburn.us/Hexagonal+architecture)
 ###### She conjures hexagonal.
@@ -39,7 +39,7 @@ $ hexe a/add contract_name [-as new_contract_name] [-v/--version 0.0.0 ]
 
 ###remove contract from Service
 ```bash
-$ hexe d/delete contract_name
+$ hexe r/remove contract_name
 ```
 
 ###add adapter to Service
@@ -80,9 +80,8 @@ $ hexe g/generate language contact_name
 ***
 
 #### TODO implement
-* typescript
-* -as/-v options
-* delete contract
+* -as option
+* -v option
 * 100% test coverage
 * dont be dependent on manually adding external dependencies when calling add
 
