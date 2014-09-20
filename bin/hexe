@@ -7,7 +7,7 @@ var fs = require('fs');
 var when = require('when');
 var nodefn = require('when/node');
 var hexeObjPath = process.cwd()+'/.hexe'
-var isNew = true
+var isNew = false
 
 when().then(function(){
   return nodefn.call(fs.readFile, hexeObjPath).then(function(data){
@@ -18,20 +18,22 @@ when().then(function(){
   })
 })
 .then(function(hexeObj){
-  var getNewHexObj = require(__dirname + '/../contracts/cli.js')
-  var newHexeObj = getNewHexObj(argv, _.cloneDeep(hexeObj))
-  return [
-     hexeObj,
-     newHexeObj
-  ];
+  var getNewHexeObj = require(__dirname + '/../contracts/cli.js')
+  return getNewHexeObj(argv, _.cloneDeep(hexeObj))
+  .then(function(newHexeObj){
+    return [
+       hexeObj,
+       newHexeObj
+    ];
+  });
 })
 .spread(function(hexeObj, newHexeObj){
   if(hexeObj !== newHexeObj){
     if(isNew){
       hexeObjPath = process.cwd()+'/'+ newHexeObj.Service +'/.hexe'
     }
-    var newHexObj = JSON.stringify(newHexeObj);
-    nodefn.call(fs.writeFile, hexeObjPath, newHexObj).done()
+    var newHexeJson = JSON.stringify(newHexeObj);
+    return nodefn.call(fs.writeFile, hexeObjPath, newHexeJson).done();
   }
 })
 .catch(function(err){
