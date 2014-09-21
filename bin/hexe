@@ -29,11 +29,13 @@ when().then(function(){
 })
 .spread(function(hexeObj, newHexeObj){
   if(hexeObj !== newHexeObj){
+    var newHexeJson = JSON.stringify(newHexeObj);
     if(isNew){
       hexeObjPath = process.cwd()+'/'+ newHexeObj.Service +'/.hexe'
     }
-    var newHexeJson = JSON.stringify(newHexeObj);
+
     return nodefn.call(fs.writeFile, hexeObjPath, newHexeJson).done();
+
   }
 })
 .catch(function(err){

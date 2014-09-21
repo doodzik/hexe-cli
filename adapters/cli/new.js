@@ -21,10 +21,11 @@ module.exports = function newCmd (argv, hexeObj){
              return obj;
            })
   })
+  .delay(7000)//TODO remove delay => Bug is that promises are not executed one after one
   .then(function(obj){
     hexeObj.lang = obj.lang
     hexeObj.service = obj.service
-    hexeObj.Service = newHexeObj.service.charAt(0).toUpperCase() + newHexeObj.service.slice(1).toLowerCase()
+    hexeObj.Service = obj.service.charAt(0).toUpperCase() + obj.service.slice(1).toLowerCase()
     return hexeObj;
   })
 }
